@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+   
+    <link href="blog/blog/static/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css" />
+    <script src="datetimepicker/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <script src="datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(function () {
+
+            $('.form_datetime').datetimepicker({
+                language: 'zh-CN'
+            });
+
+        })//end document.ready
+    
+    </script>
+</head>
+<body>
+    
+    <div class="input-group date form_datetime col-md-2" >
+        <input class="form-control" type="text" />
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-th"></span>
+        </span>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="posts">
+    {% for post in post_list %}
+        <div class="hero-unit">
+            <h1>
+                {{ post.title }}
+            </h1>
+            <p>
+                {{ post.content }}
+            </p>
+            <p>
+                Time:<a>{{ post.date_time }}</a>
+                <a>{{ post.category }}</a>
+            </p>
+            <p>
+                <a class="btn btn-primary" href="{% url 'detail' post.id %}">Read More >>></a>
+            </p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,299 @@
+<html>
+<head>
+    {% load static %}
+    <link href="{% static "css/bootstrap-combined.min.css" %}" rel="stylesheet" media="screen">
+
+    <script type="text/javascript" src="{% static "js/jquery-2.0.0.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery-ui.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/bdtime.js" %}"></script>
+
+    <style type="text/css">
+        h1{
+            font-family: 'Microsoft YaHei';
+        }
+        h2{
+            font-family: 'KaiTi';
+            font-weight: bold;
+        }
+        .message {
+
+        }
+        .message h1{
+            font: 15px "MICROSOFT YAHEI", Arial, Helvetica, sans-serif;
+            color: #FFF;
+            padding: 5px 0px 5px 5px;
+            margin: -2px -10px 0 0;
+            text-shadow: 1px 1px 1px #949494;
+            background: dodgerblue;
+        }
+        .message p{
+            margin: 0 -10px 0 0;
+{#            line-height: 10px;#}
+            word-wrap:break-word;
+            word-break:normal;
+        }
+        #tourist {
+            display: block;
+            font-weight: 900;
+            width: 200px;
+            float: left;
+        }
+        #time {
+            margin-left: 90px;
+            font-size: 12px;
+            color: #149bdf;
+        }
+
+        #cal{width:420px;border:1px solid #c3d9ff;font-size:12px;margin:5px 0 0 0}
+        #cal #top{height:29px;line-height:29px;background:#e7eef8;color:#003784;padding-left:70px}
+        #cal #top select{margin:1px 0 2px 0;font-size:12px;height: 24px;width: 68px;font-family:arial}
+        #cal #top input{padding:0;font-size: 10px}
+        #cal ul#wk{margin:0;padding:0;height:25px}
+        #cal ul#wk li{float:left;width:60px;text-align:center;line-height:25px;list-style:none}
+        #cal ul#wk li b{font-weight:normal;color:#c60b02}
+        #cal #cm{clear:left;border-top:1px solid #ddd;border-bottom:1px dotted #ddd;position:relative}
+        #cal #cm .cell{position:absolute;width:42px;height:36px;text-align:center;margin:0 0 0 9px}
+        #cal #cm .cell .so{font:bold 16px arial;}
+{#                                #cal #bm{text-align:right;height:24px;line-height:24px;padding:0 13px 0 0}#}
+{#                                #cal #bm a{color:7977ce}#}
+        #cal #fd{display:none;position:absolute;border:1px solid #dddddf;background:#feffcd;padding:5px;line-height:21px;width:150px}
+        #cal #fd b{font-weight:normal;color:#c60a00}
+        .entry{
+            font-family: SimHei;
+            text-align: right;
+        }
+    </style>
+
+    <style type="text/css">
+        .comment {
+{#        margin-top:auto;#}
+{#        margin-left:auto;#}
+{#        margin-right:auto;#}
+{#            max-width: 500px;#}
+            background: #F8F8F8;
+            margin-top: -10px;
+            font: 12px Arial, Helvetica, sans-serif;
+            color: #666;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+        }
+        .comment h1 {
+            font: 15px "MICROSOFT YAHEI", Arial, Helvetica, sans-serif;
+            padding: 5px 0px 5px 5px;
+            display: block;
+            margin-right: -10px;
+            color: #FFF;
+            background: #9DC45F;
+            text-shadow: 1px 1px 1px #949494;
+            border-bottom:1px solid #89AF4C;
+        }
+        .comment label {
+            display: block;
+            margin: 0px 0px 5px;
+        }
+        .comment label>span {
+            float: left;
+            font-size: 13px;
+            margin-top: -10px;
+            color: #5E5E5E;
+        }
+        .comment input[type="text"], .comment input[type="email"], .comment textarea, .comment select {
+            color: #555;
+            height: 30px;
+            line-height:15px;
+            width: 100%;
+            margin-top: 2px;
+            border: 1px solid #E5E5E5;
+            background: #FBFBFB;
+            outline: 0;
+            -webkit-box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
+            box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
+            font: normal 13px/13px Arial, Helvetica, sans-serif;
+        }
+        .comment textarea{
+            height:50px;
+            padding-top: 10px;
+        }
+
+        .comment .button {
+            background-color: #9DC45F;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-border-radius: 5px;
+            border: none;
+            padding: 5px 25px 5px 25px;
+            color: #FFF;
+            text-shadow: 1px 1px 1px #949494;
+            font-size: 13px;
+            font-weight: 900;
+            margin-left: -3px;
+        }
+        .comment .button:hover {
+            background-color:#80A24A;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="page-header">
+                            <h1>
+                                Mr lee's Blog
+                                <h2>浅丶唱</h2>
+                            </h1>
+                        </div>
+                    </div>
+                    <form class="form-search">
+                        <input class="input-medium search-query" type="text" name="search"/>
+                        <button type="submit" class="btn">查找</button>
+                    </form>
+                    <ul class="nav nav-list">
+                        <li class="nav-header">
+                            快速入口
+                        </li>
+                        <li>
+                            <a href="http://127.0.0.1:8080/home/">首页</a>
+                        </li>
+                        <li>
+                            <a href="http://127.0.0.1:8080/blog/">文章</a>
+                        </li>
+                        <li>
+                            <a href="#">留言板</a>
+                        </li>
+                        <li class="nav-header">
+                            功能列表
+                        </li>
+                        <li>
+                            <a href="#">撰写博文</a>
+                        </li>
+                        <li>
+                            <a href="#">设置</a>
+                        </li>
+                        <li class="divider">
+                        </li>
+                        <li class="nav-header">
+                            其他链接
+                        </li>
+                        <li>
+                            <a href="http://weibo.com/u/2947670473?is_hot=1" target="_blank">微博</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/th2328646" target="_blank">Github</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="span5">
+                <div class="row-fluid">
+                    <div class="span12">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+            <div class="span4">
+                <div class="row-fluid" style="margin-top: 5px">
+                    <div class="span12 entry">
+                        <a href="http://127.0.0.1:8080/login/">登录</a>
+                        <a href="http://127.0.0.1:8080/login/">退出</a>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span12">
+                        <table cellpadding="0" cellspacing="0" id="1">
+                            <tr>
+                                <td>
+                                    <div id="cal">
+                                        <div id="top">
+                                            公元
+                                            <select>
+                                            </select>
+                                            年
+                                            <select>
+                                            </select>
+                                            月 农历
+                                            <span>
+                                            </span>
+                                            年 [
+                                            <span>
+                                            </span>
+                                            年 ]
+                                            <input type="button" value="回到今天" title="点击后跳转回今天" style="padding:0px">
+                                        </div>
+                                        <ul id="wk">
+                                            <li>
+                                                一
+                                            </li>
+                                            <li>
+                                                二
+                                            </li>
+                                            <li>
+                                                三
+                                            </li>
+                                            <li>
+                                                四
+                                            </li>
+                                            <li>
+                                                五
+                                            </li>
+                                            <li>
+                                                <b>
+                                                    六
+                                                </b>
+                                            </li>
+                                            <li>
+                                                <b>
+                                                    日
+                                                </b>
+                                            </li>
+                                        </ul>
+                                        <div id="cm">
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span12 message">
+                        <h1>留言板</h1>
+                        {% for comment_list in comment_list %}
+                        <p><span id="tourist">{{ comment_list.tourist }}：</span><span id="time">{{ comment_list.date_time }}</span></p>
+                        <p>{{ comment_list.comment }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="comment">
+                        <form action="" method="post" class="comment">
+                            <h1>发表评论</h1>
+                            <label>
+                                <span>用户名 ：</span>
+                                <input id="name" type="text" name="name" />
+                            </label>
+                            <label>
+                                <span>邮箱 ：</span>
+                                <input id="email" type="email" name="email" />
+                            </label>
+                            <label>
+                                <span>评论 ：</span>
+                                <textarea id="message" name="message"></textarea>
+                            </label>
+                            <label>
+                                <span>&nbsp;</span>
+                                <input type="button" class="button" value="提交" />
+                            </label>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
